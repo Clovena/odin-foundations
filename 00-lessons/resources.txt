@@ -7,3 +7,15 @@
 3. Flexbox commands for container and items
   https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
+4. Javascript String Manipulation Guides
+  https://www.w3schools.com/jsref/jsref_obj_string.asp
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+5. Javascript Comparisons and Conditionals Guides
+  https://javascript.info/comparison
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Conditionals
+  https://www.w3schools.com/js/js_if_else.asp
+  https://www.w3schools.com/js/js_switch.asp
+
+6. Regular Expressions Guide
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions
