@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script defer src="./javascript.js"></script>
+    <title>JavaScript and DOM</title>
+  </head>
+  <body>
+    <h1>JavaScript and DOM</h1>
+
+    <button onclick="alert('Hello World')">Click Me</button>
+    <!-- Events: Method 1
+    This button is rather cluttered and difficult to parse for human users -->
+
+    <button id="btn">Click Me Next</button>
+    <!-- Events: Method 2
+    This button is linked to the .js file via id="btn" so is much easier to read.
+    However, only one onclick property can be assigned, just like in Method 1.  -->
+
+    <button id="bestBtn">Click Me Third</button>
+    <!-- Events: Method 3
+     This is the preferred way to observe Events.
+     See the .js file to understand how multiple properties can be assigned. -->
+
+    <div id="container"></div>
+
+    <!-- Node Group Example -->
+    <div id="node-group">
+      <button id="one">Click Me 1</button>
+      <button id="two">Click Me 2</button>
+      <button id="three">Click Me 3</button>
+    </div>
+  </body>
+</html>
