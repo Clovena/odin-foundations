@@ -3,9 +3,10 @@ const alphaNumeric = function (str) {
 };
 
 const palindromes = function (str) {
-  let strClean = alphaNumeric(str);
-  let arr = split(strClean, '');
-  return arr === arr.reverse();
+  let strClean = alphaNumeric(str).toLowerCase();
+  let arr = strClean.split('');
+  arrBackwards = arr.slice().reverse().join('');
+  return arr.join('') === arrBackwards;
 };
 
 // Do not edit below this line
