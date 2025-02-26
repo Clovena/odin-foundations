@@ -1,0 +1,60 @@
+div {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single {
+  width: 24px;
+  height: 24px;
+}
+
+.double {
+  width: 48px;
+  height: 24px;
+}
+
+.triple {
+  width: 24px;
+  height: 72px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rebeccapurple;
+  width: 360px;
+  padding: 12px;
+}
+
+#display {
+  display: flex;
+  height: 48px;
+}
+
+#bottom-half {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#digits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
