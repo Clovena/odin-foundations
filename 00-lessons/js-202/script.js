@@ -228,7 +228,7 @@ console.log(finalResult);
 // Technically, you can drop the 0 in reduce this time.
 // Starting the sum at 0 is no different
 // than starting the sum at the first element.
-// In some cases, though, an initialValue is needed. 
+// In some cases, though, an initialValue is needed.
 
 // Alternatively, with callbacks defined inline:
 const altFinalResult = finalArr
@@ -241,3 +241,5 @@ console.log(altFinalResult);
 // Check out this crazy syntax, by the way.
 // You can line break before the dot-method.
 // In a way, the dot is like the %>% pipe in R's tidyverse.
+
+console.log('There is more to be done in the additional .js files!');
