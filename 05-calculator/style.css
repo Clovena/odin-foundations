@@ -1,13 +1,17 @@
-div {
-  border: 1px solid black;
-  text-align: center;
-}
-
-.buttons {
+button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 36px;
+  background-color: lightyellow;
+}
+
+button:active {
+  opacity: 0.75;
 }
 
 .row {
@@ -16,29 +20,13 @@ div {
   align-items: center;
 }
 
-.single {
-  width: 24px;
-  height: 24px;
-}
-
-.double {
-  width: 48px;
-  height: 24px;
-}
-
-.triple {
-  width: 24px;
-  height: 72px;
-}
-
 #container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rebeccapurple;
-  width: 360px;
-  padding: 12px;
+  padding: 24px;
 }
 
 #display {
@@ -57,4 +45,8 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#bksp-img {
+  width: 100%;
 }
