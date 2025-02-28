@@ -1,27 +1,74 @@
-const BUTTON_SIZE = 96;
+// Declare operator functions
+function add(a, b) {
+  return a + b;
+}
+function subtract(a, b) {
+  return a - b;
+}
+function multiply(a, b) {
+  return a * b;
+}
+function divide(a, b) {
+  return a / b;
+}
 
-const calcContainer = document.querySelector('#container');
-calcContainer.style.width = `${BUTTON_SIZE * 5}px`;
-
-const singleButtons = document.querySelectorAll('.single');
-const doubleButtons = document.querySelectorAll('.double');
-const tripleButtons = document.querySelectorAll('.triple');
-const allButtons = {
-  ...singleButtons,
-  ...doubleButtons,
-  ...tripleButtons,
-};
-
-function declareButtonSize(nodes, width, height) {
-  pxWidth = `${width}px`;
-  pxHeight = `${height}px`;
-  for (let n of nodes) {
-    const elem = n;
-    elem.style.width = pxWidth;
-    elem.style.height = pxHeight;
+// Declare evaluation function, used within equalsButtom.addEventListener
+function evaluateExpression(left, right, fn) {
+  if (fn === '+') {
+    return add(left, right);
+  } else if (fn === '-') {
+    return subtract(left, right);
+  } else if (fn === 'x') {
+    return multiply(left, right);
+  } else if (fn === '÷') {
+    return divide(left, right);
+  } else {
+    return 'Error';
   }
 }
 
-declareButtonSize(singleButtons, BUTTON_SIZE, BUTTON_SIZE);
-declareButtonSize(doubleButtons, BUTTON_SIZE * 2, BUTTON_SIZE);
-declareButtonSize(tripleButtons, BUTTON_SIZE, BUTTON_SIZE * 3);
+// Declare components of the expression
+let expressionLeft = '',
+  expressionRight = '',
+  isLeftSide = true,
+  operation = '';
+
+const miniDisplayValue = document.querySelector('#mini-display');
+const displayValue = document.querySelector('#big-display');
+
+const equalsButton = document.querySelector('#equals');
+equalsButton.addEventListener('click', () => {
+  let result = evaluateExpression(expressionLeft, expressionRight, operation);
+  miniDisplayValue.textContent += '=';
+  displayValue.textContent = result;
+  expressionLeft = result;
+  expressionRight = '';
+  isLeftSide = true;
+  operation = '';
+});
+
+const numeralButtons = document.querySelectorAll('.numeral');
+numeralButtons.forEach((b) => {
+  b.addEventListener('click', () => {
+    displayValue.textContent += b.textContent;
+    miniDisplayValue.textContent += b.textContent;
+    // Append numeral value to corresponding side of expression
+    if (isLeftSide) {
+      expressionLeft += b.textContent;
+    } else {
+      expressionRight += b.textContent;
+    }
+  });
+});
+
+const operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach((b) => {
+  b.addEventListener('click', () => {
+    if (operation === '') {
+      operation = b.textContent;
+      displayValue.textContent += b.textContent;
+      miniDisplayValue.textContent += b.textContent;
+      isLeftSide = false;
+    }
+  });
+});
