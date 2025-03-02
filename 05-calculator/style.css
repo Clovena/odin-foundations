@@ -31,16 +31,17 @@ button:active {
 #mini-display {
   height: 32px;
   margin: 0;
-  padding-right: 32px;
-  background-color: lightsteelblue;
+  padding: 6px 32px;
+  background-color: #b0c4decc;
   font-size: 32px;
   text-align: right;
 }
 
 #big-display {
   height: 60px;
+  padding: 12px;
   margin-bottom: 12px;
-  background-color: steelblue;
+  background-color: #b0c4de;
   font-size: 60px;
   text-align: right;
 }
