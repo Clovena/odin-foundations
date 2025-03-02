@@ -15,5 +15,6 @@ cd b
 git remote add a ../a
 git fetch a
 git merge --allow-unrelated-histories a/master
-git remote remove a```
+git remote remove a
+```
 Credit and thanks to newren and the [git-filter-repo](https://github.com/newren/git-filter-repo).
