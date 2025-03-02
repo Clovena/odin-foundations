@@ -21,7 +21,6 @@ button:active {
   display: flex;
   flex-direction: column;
   border: 1px solid rebeccapurple;
-  margin: 12px;
 }
 
 .button-row {
@@ -49,4 +48,12 @@ button:active {
 #top-half,
 #bottom-half {
   display: flex;
+}
+
+#zero {
+  flex-grow: 1;
+}
+
+#equals {
+  flex-grow: 1;
 }

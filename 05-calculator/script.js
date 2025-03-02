@@ -1,22 +1,40 @@
 // Declare evaluation function, used within equalsButtom.addEventListener
 function evaluateExpression(left, right, fn) {
   let a = +left,
-    b = +right;
+    b = +right,
+    c = 0;
   if (fn === '+') {
-    return a + b;
+    c = a + b;
   } else if (fn === '-') {
-    return a - b;
+    c = a - b;
   } else if (fn === 'x') {
-    return a * b;
+    c = a * b;
   } else if (fn === '÷') {
-    return a / b;
+    c = a / b;
+  } else if (fn === '^') {
+    c = a ** b;
+  } else {
+    c = 'Error';
+  }
+
+  //// May be able to apply rounding at this step
+  return c;
+}
+
+function evaluateInstantOperator(num, fn) {
+  let a = +num;
+  if (fn === '√') {
+    return Math.sqrt(a);
+  } else if (fn === '%') {
+    return a / 100;
   } else {
     return 'Error';
   }
 }
 
-const miniDisplayValue = document.querySelector('#mini-display');
+// Declare components of the display
 const displayValue = document.querySelector('#big-display');
+const miniDisplayValue = document.querySelector('#mini-display');
 
 // Declare components of the expression
 let expressionLeft = '',
@@ -27,6 +45,19 @@ let expressionLeft = '',
 let isLeftSide = true,
   isEvaluated = false,
   hasDecimal = false;
+
+// All-clear button
+const allClearButton = document.querySelector('#all-clear');
+allClearButton.addEventListener('click', () => {
+  miniDisplayValue.textContent = '';
+  displayValue.textContent = '';
+  expressionLeft = '';
+  expressionRight = '';
+  operation = '';
+  isLeftSide = true;
+  isEvaluated = false;
+  hasDecimal = false;
+});
 
 // Equals button
 const equalsButton = document.querySelector('#equals');
@@ -62,6 +93,31 @@ numeralButtons.forEach((b) => {
   });
 });
 
+// Decimal button
+const decimalButton = document.querySelector('#decimal');
+
+// Instant-operator buttons
+const instantButtons = document.querySelectorAll('.instant-operator');
+instantButtons.forEach((b) => {
+  b.addEventListener('click', () => {
+    if (operation === '') {
+      let result = evaluateInstantOperator(expressionLeft, b.textContent);
+      if (b.textContent === '√') {
+        miniDisplayValue.textContent = `√${miniDisplayValue.textContent} =`;
+      } else if (b.textContent === '%') {
+        miniDisplayValue.textContent += '% =';
+      }
+
+      isEvaluated = true;
+      displayValue.textContent = result;
+      expressionLeft = result;
+      expressionRight = '';
+      isLeftSide = true;
+      operation = '';
+    }
+  });
+});
+
 // Operator buttons
 const operatorButtons = document.querySelectorAll('.operator');
 operatorButtons.forEach((b) => {
@@ -81,10 +137,6 @@ operatorButtons.forEach((b) => {
   });
 });
 
-// Decimal button
-const decimalButton = document.querySelector('#decimal');
-
-
 // CURRENT KNOWN BUGS
 // After evaluating, use of numeral or operator button does not clear
 // mini display, simply concatenates.
@@ -96,5 +148,5 @@ const decimalButton = document.querySelector('#decimal');
 // Two consecutive equals signs results in error
 
 // TODO:
-// AC and Del don't do anything yet.
+// Del doesn't do anything yet.
 // Decimal doesn't do anything yet.
