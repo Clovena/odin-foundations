@@ -1,0 +1,52 @@
+* {
+  font-family: sans-serif;
+}
+
+button {
+  box-sizing: border-box;
+  border: 1px solid black;
+  text-align: center;
+  margin: 4px;
+  width: 92px;
+  font-size: 36px;
+  background-color: lightyellow;
+}
+
+button:active {
+  opacity: 0.75;
+}
+
+.button-holder,
+.del-eval-holder {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rebeccapurple;
+  margin: 12px;
+}
+
+.button-row {
+  display: flex;
+}
+
+#mini-display {
+  height: 32px;
+  margin: 0;
+  padding: 6px 32px;
+  background-color: #b0c4decc;
+  font-size: 32px;
+  text-align: right;
+}
+
+#big-display {
+  height: 60px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #b0c4de;
+  font-size: 60px;
+  text-align: right;
+}
+
+#top-half,
+#bottom-half {
+  display: flex;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+    <title>Odin's Calculator</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <div id="container">
+      <div id="display">Hey!</div>
+      <div id="buttons">
+        <div class="row" id="first-row">
+          <button class="single" id="sqrt">√</button>
+          <button class="single" id="power">^</button>
+          <button class="single" id="plus-minus">+/-</button>
+          <button class="single" id="percent">%</button>
+          <button class="single" id="all-clear">AC</button>
+        </div>
+        <div class="row" id="second-row">
+          <button class="single" id="seven">7</button>
+          <button class="single" id="eight">8</button>
+          <button class="single" id="nine">9</button>
+          <button class="single" id="divide">÷</button>
+          <button class="single" id="backspace">
+            <img
+              id="bksp-img"
+              src="./img/bksp_light.png"
+              alt="Backspace symbol, indicating the backspace key on the calculator." />
+          </button>
+        </div>
+        <div id="bottom-half">
+          <div id="digits">
+            <div class="row" id="third-row">
+              <button class="single" id="four">4</button>
+              <button class="single" id="five">5</button>
+              <button class="single" id="six">6</button>
+              <button class="single" id="multiply">x</button>
+            </div>
+            <div class="row" id="fourth-row">
+              <button class="single" id="one">1</button>
+              <button class="single" id="two">2</button>
+              <button class="single" id="three">3</button>
+              <button class="single" id="subtract">–</button>
+            </div>
+            <div class="row" id="fifth-row">
+              <button class="double" id="zero">0</button>
+              <button class="single" id="decimal">.</button>
+              <button class="single" id="plus">+</button>
+            </div>
+          </div>
+          <button class="triple" id="equals">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

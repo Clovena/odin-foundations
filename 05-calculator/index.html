@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+    <title>Odin's Calculator</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <div id="mini-display"></div>
+    <div id="big-display"></div>
+
+    <div id="top-half">
+      <div class="button-holder">
+        <div class="button-row" id="row-one">
+          <button class="operator single" id="sqrt">√</button>
+          <button class="operator single" id="power">^</button>
+          <button class="operator single" id="plus-minus">±</button>
+          <button class="operator single" id="percent">%</button>
+        </div>
+
+        <div class="button-row" id="row-two">
+          <button class="numeral single" id="seven">7</button>
+          <button class="numeral single" id="eight">8</button>
+          <button class="numeral single" id="nine">9</button>
+          <button class="operator single" id="divide">÷</button>
+        </div>
+      </div>
+      <div class="del-eval-holder">
+        <button class="single" id="all-clear">AC</button>
+        <button class="single" id="backspace">Del</button>
+      </div>
+    </div>
+
+    <div id="bottom-half">
+      <div class="button-holder">
+        <div class="button-row" id="row-three">
+          <button class="numeral single" id="four">4</button>
+          <button class="numeral single" id="five">5</button>
+          <button class="numeral single" id="six">6</button>
+          <button class="operator single" id="multiply">x</button>
+        </div>
+
+        <div class="button-row" id="row-four">
+          <button class="numeral single" id="one">1</button>
+          <button class="numeral single" id="two">2</button>
+          <button class="numeral single" id="three">3</button>
+          <button class="operator single" id="subtract">-</button>
+        </div>
+
+        <div class="button-row" id="row-five">
+          <button class="numeral double" id="zero">0</button>
+          <button class="single" id="decimal">.</button>
+          <button class="operator single" id="plus">+</button>
+        </div>
+      </div>
+
+      <div class="del-eval-holder">
+        <button class="triple" id="equals">=</button>
+      </div>
+    </div>
+  </body>
+</html>
