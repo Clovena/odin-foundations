@@ -2,6 +2,12 @@
   font-family: sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 button {
   box-sizing: border-box;
   border: 1px solid black;
@@ -20,29 +26,42 @@ button:active {
 .del-eval-holder {
   display: flex;
   flex-direction: column;
-  border: 1px solid rebeccapurple;
 }
 
 .button-row {
   display: flex;
 }
 
+#calc-container {
+  display: flex;
+  flex-direction: column;
+  background-color: chocolate;
+  padding: 24px;
+  margin-top: 0;
+  border-radius: 12px;
+}
+
+#mini-display, 
+#big-display {
+  border: 3px solid chocolate;
+  border-radius: 12px;
+  text-align: right;
+}
+
 #mini-display {
   height: 32px;
   margin: 0;
   padding: 6px 32px;
+  width: 480px;
   background-color: #b0c4decc;
   font-size: 32px;
-  text-align: right;
 }
 
 #big-display {
   height: 60px;
   padding: 12px;
-  margin-bottom: 12px;
   background-color: #b0c4de;
   font-size: 60px;
-  text-align: right;
 }
 
 #top-half,
@@ -50,10 +69,8 @@ button:active {
   display: flex;
 }
 
-#zero {
-  flex-grow: 1;
-}
-
+#all-clear,
+#zero,
 #equals {
   flex-grow: 1;
 }

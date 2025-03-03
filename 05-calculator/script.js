@@ -43,14 +43,22 @@ let expressionLeft = '',
 
 // Declare boolean flags to control behavior
 let isLeftSide = true,
+  //// Controls which variable, expressionLeft or expressionRight,
+  //// to save numeric inputs
+
   isEvaluated = false,
+  //// Controls when display reverts from expression, plus equals-sign
+  //// back to new building expression
+
   hasDecimal = false;
+//// Controls when decimal can be added; if one already exists in
+//// expressionLeft or expressionRight, no second decimal can be added
 
 // All-clear button
 const allClearButton = document.querySelector('#all-clear');
 allClearButton.addEventListener('click', () => {
-  miniDisplayValue.textContent = '';
   displayValue.textContent = '';
+  miniDisplayValue.textContent = '';
   expressionLeft = '';
   expressionRight = '';
   operation = '';
@@ -62,15 +70,33 @@ allClearButton.addEventListener('click', () => {
 // Equals button
 const equalsButton = document.querySelector('#equals');
 equalsButton.addEventListener('click', () => {
-  let result = evaluateExpression(expressionLeft, expressionRight, operation);
-  miniDisplayValue.textContent += '=';
-
-  isEvaluated = true;
-  displayValue.textContent = result;
-  expressionLeft = result;
+  if (expressionRight != '') {
+    // if expression is completely assembled
+    let result = evaluateExpression(expressionLeft, expressionRight, operation);
+    displayValue.textContent = result;
+    miniDisplayValue.textContent += '=';
+    expressionLeft = result;
+  } else if (operation != '') {
+    // if left-hand side and operator are inputted, perform operation on self
+    let result = evaluateExpression(expressionLeft, expressionLeft, operation);
+    displayValue.textContent = result;
+    miniDisplayValue.textContent += `${expressionLeft}=`;
+    expressionLeft = result;
+  } else if (expressionLeft != '') {
+    // if only left-hand side is inputted, return self
+    let result = +expressionLeft;
+    displayValue.textContent = result;
+    expressionLeft = result;
+    if (!isEvaluated) {
+      miniDisplayValue.textContent += '=';
+    } else {
+      miniDisplayValue.textContent = `${result}=`;
+    }
+  }
   expressionRight = '';
-  isLeftSide = true;
   operation = '';
+  isLeftSide = true;
+  isEvaluated = true;
 });
 
 // Numeral buttons
@@ -95,6 +121,23 @@ numeralButtons.forEach((b) => {
 
 // Decimal button
 const decimalButton = document.querySelector('#decimal');
+decimalButton.addEventListener('click', () => {
+  if (!hasDecimal) {
+    if (isLeftSide) {
+      expressionLeft += '.';
+    } else {
+      expressionRight += '.';
+    }
+    displayValue.textContent += decimalButton.textContent;
+    if (isEvaluated) {
+      miniDisplayValue.textContent = expressionLeft;
+    } else {
+      miniDisplayValue.textContent += decimalButton.textContent;
+    }
+    isEvaluated = false;
+    hasDecimal = true;
+  }
+});
 
 // Instant-operator buttons
 const instantButtons = document.querySelectorAll('.instant-operator');
@@ -103,9 +146,9 @@ instantButtons.forEach((b) => {
     if (operation === '') {
       let result = evaluateInstantOperator(expressionLeft, b.textContent);
       if (b.textContent === '√') {
-        miniDisplayValue.textContent = `√${miniDisplayValue.textContent} =`;
+        miniDisplayValue.textContent = `√${expressionLeft} =`;
       } else if (b.textContent === '%') {
-        miniDisplayValue.textContent += '% =';
+        miniDisplayValue.textContent = `${expressionLeft}% =`;
       }
 
       isEvaluated = true;
@@ -113,6 +156,7 @@ instantButtons.forEach((b) => {
       expressionLeft = result;
       expressionRight = '';
       isLeftSide = true;
+      hasDecimal = false;
       operation = '';
     }
   });
@@ -137,16 +181,5 @@ operatorButtons.forEach((b) => {
   });
 });
 
-// CURRENT KNOWN BUGS
-// After evaluating, use of numeral or operator button does not clear
-// mini display, simply concatenates.
-// i.e. need a way to clear mini-display and append result value
-//
-// Can evaluate expressions without
-// one or both of expressionLeft and expressionRight
-//
-// Two consecutive equals signs results in error
-
 // TODO:
-// Del doesn't do anything yet.
-// Decimal doesn't do anything yet.
+//// Plus-minus doesn't do anything yet. 
